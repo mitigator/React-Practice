@@ -1,42 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
   text-align: center;
+  min-width: 320px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  color: #2d3748;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  color: #4a5568;
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #00d4ff 0%, #00a8ff 100%);
+  background-clip: text;
+  border-radius: 15px;
+  border: 2px solid rgba(0, 212, 255, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h2:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  background-clip: text;
 }
 
-.card {
-  padding: 2em;
+.buttoncontainer {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-.read-the-docs {
-  color: #888;
+button {
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+button:hover {
+  box-shadow: 0 15px 25px rgba(0, 198, 255, 0.4);
+  background: linear-gradient(135deg, #00b4e6 0%, #0056cc 100%);
+}
+
