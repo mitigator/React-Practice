@@ -44,26 +44,30 @@ const TodoInput: React.FC<TodoInputProps> = ({ onAddTodo }) => {
     }, []);
 
     return (
-        <div>
-            <div>
+        <div className="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+            <div className="flex flex-col sm:flex-row gap-3">
                 <input
                     ref={inputRef}
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
                     onKeyPress={handleKeyPress}
-                    placeholder="Add a new todo..."                  
+                    placeholder="Add a new todo..."   
+                    className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"               
                 />
                 <select
                 value={priority}
                 onChange={handlePriorityChange}
+                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+
                 >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
                 </select>
 
-                <button onClick={handleSubmit}>
+                <button onClick={handleSubmit}
+                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
                     <Plus size={20} />
                 </button>
 

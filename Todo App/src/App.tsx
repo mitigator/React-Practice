@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo, useCallback} from "react"
+import React, { useState, useEffect, useMemo, useCallback } from "react"
 import type { Todo, TodoStats, Filtertype } from "./types";
 import { TodoProvider } from './context/TodoContext';
 import { filterTodos } from "./utils/helpers";
@@ -41,30 +41,30 @@ const App: React.FC = () => {
     setTodos(sampleTodos);
   }, []);
 
-  const filteredTodos = useMemo((): Todo[] =>{
+  const filteredTodos = useMemo((): Todo[] => {
     return filterTodos(todos, filter, searchTerm)
-  },[todos, filter, searchTerm]);
+  }, [todos, filter, searchTerm]);
 
-  const stats: TodoStats = useMemo(()=>({
+  const stats: TodoStats = useMemo(() => ({
     totalTasks: todos.length,
-    completedTasks: todos.filter((todo:Todo)=> todo.completed).length,
+    completedTasks: todos.filter((todo: Todo) => todo.completed).length,
     pendingTasks: todos.filter((todo: Todo) => !todo.completed).length,
     hasCompletedTasks: todos.some((todo: Todo) => todo.completed)
   }), [todos]);
-  
+
   //callback functons
 
-  const addTodo = useCallback((newTodo:Todo):void=>{
-    setTodos((prevTodos)=>[...prevTodos,newTodo]);
-  },[]);
+  const addTodo = useCallback((newTodo: Todo): void => {
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+  }, []);
 
-  const toggleTodo = useCallback((id:number):void =>{
-    setTodos((prevTodos:Todo[]) =>
-      prevTodos.map((todo:Todo)=>
-      todo.id === id ? {...todo, completed: !todo.completed} : todo
+  const toggleTodo = useCallback((id: number): void => {
+    setTodos((prevTodos: Todo[]) =>
+      prevTodos.map((todo: Todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
-  },[]);
+  }, []);
 
   const editTodo = useCallback((id: number, updates: Partial<Pick<Todo, 'text' | 'priority'>>): void => {
     setTodos((prevTodos: Todo[]) =>
@@ -90,13 +90,13 @@ const App: React.FC = () => {
     setFilter(newFilter);
   }, []);
 
-  return(
+  return (
     <TodoProvider>
-      <div>
-        <div>
-          <header>
-            <h1>Todo App</h1>
-            <p>Manage Your Tasks Effectively</p>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <header className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Todo App</h1>
+            <p className="text-gray-600 dark:text-gray-400">Manage Your Tasks Effectively</p>
           </header>
           <StatsBar {...stats} />
           <TodoInput onAddTodo={addTodo} />

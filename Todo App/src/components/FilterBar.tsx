@@ -10,6 +10,7 @@ interface FilterBarProps {
 }
 
 const FilterBar: React.FC<FilterBarProps> = ({
+  currentFilter,
   onFilterChange,
   onClearCompleted,
   hasCompletedTasks,
@@ -28,12 +29,16 @@ const FilterBar: React.FC<FilterBarProps> = ({
   );
 
   return (
-    <div>
-      <div>
+    <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md mb-6">
+      <div className="flex gap-2">
         {filters.map(({ key, label, icon: Icon }) => (
           <button
             key={key}
             onClick={handleFilterClick(key)}
+            className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-colors ${currentFilter === key
+              ? 'bg-blue-500 text-white'
+              : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+              }`}
             aria-label={`Filter ${label} tasks`}
           >
             <Icon size={16} />
@@ -41,8 +46,13 @@ const FilterBar: React.FC<FilterBarProps> = ({
           </button>
         ))}
       </div>
+
       {hasCompletedTasks && (
-        <button onClick={onClearCompleted} aria-label="Clear completed tasks">
+        <button
+          onClick={onClearCompleted}
+          className="px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900 rounded-lg transition-colors"
+          aria-label="Clear all completed tasks"
+        >
           Clear Completed
         </button>
       )}
